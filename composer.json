@@ -1,0 +1,13 @@
+{
+    "name": "camuthig/courier-mailjet",
+    "description": "A Mailjet courier implementation",
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Chris Muthig",
+            "email": "camuthig@gmail.com"
+        }
+    ],
+    "require": {}
+}
