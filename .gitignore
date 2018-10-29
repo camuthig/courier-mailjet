@@ -1,0 +1,10 @@
+/vendor
+/.idea
+/composer.lock
+/.composer
+/site
+
+reports
+coverage.xml
+junit.xml
+.env
