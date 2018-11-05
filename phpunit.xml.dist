@@ -13,7 +13,7 @@
          beStrictAboutOutputDuringTests="true"
          beStrictAboutTestsThatDoNotTestAnything="true">
     <testsuites>
-        <testsuite name="courier">
+        <testsuite name="mailjet-courier">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

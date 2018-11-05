@@ -23,7 +23,7 @@ class MailjetCourier implements Courier
     /**
      * @var Client
      */
-    private $client;
+    protected $client;
 
     public function __construct(Client $client)
     {
@@ -121,14 +121,14 @@ class MailjetCourier implements Courier
         ];
     }
 
-    private function buildAddresses(array $addresses): array
+    protected function buildAddresses(array $addresses): array
     {
         return array_map(function (Address $address) {
             return $this->buildAddress($address);
         }, $addresses);
     }
 
-    private function buildAddress(Address $address): array
+    protected function buildAddress(Address $address): array
     {
         return [
             'Email' => $address->getEmail(),
@@ -136,7 +136,7 @@ class MailjetCourier implements Courier
         ];
     }
 
-    private function buildAttachments(array $attachments, bool $embedded): array
+    protected function buildAttachments(array $attachments, bool $embedded): array
     {
         return array_map(function (Attachment $attachment) use ($embedded) {
             $arr = [
@@ -158,7 +158,7 @@ class MailjetCourier implements Courier
      *
      * @return array|null
      */
-    private function buildHeaders(array $headers): ?array
+    protected function buildHeaders(array $headers): ?array
     {
         $headersArray = [];
 

@@ -16,7 +16,7 @@ class MailjetCourierIntegrationTest extends IntegrationTestCase
     /**
      * @var string
      */
-    private static $file = '/tmp/sparkpost_attachment_test.txt';
+    private static $file = '/tmp/mailjet_attachment_test.txt';
 
     /**
      * @var MailjetCourier
@@ -46,7 +46,7 @@ class MailjetCourierIntegrationTest extends IntegrationTestCase
 
     public function testSendsSimpleContent()
     {
-        $subject = 'Courier Integration Test ' . random_int(100000000, 999999999);
+        $subject = 'Mailjet Courier Integration Test ' . random_int(100000000, 999999999);
 
         $email = EmailBuilder::email()
             ->to($this->getTo())
@@ -95,7 +95,7 @@ class MailjetCourierIntegrationTest extends IntegrationTestCase
 
     public function testSendsTemplatedEmail()
     {
-        $subject = 'Courier Template Integration Test ' . random_int(100000000, 999999999);
+        $subject = 'Mailjet Courier Template Integration Test ' . random_int(100000000, 999999999);
 
         $email = EmailBuilder::email()
             ->to($this->getTo())
