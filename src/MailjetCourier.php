@@ -74,15 +74,15 @@ class MailjetCourier implements Courier
         $preparedEmail = [
             'Messages' => [
                 array_merge([
-                    'From' => $this->buildAddress($email->getFrom()),
-                    'To' => $this->buildAddresses($email->getToRecipients()),
-                    'Cc' => $this->buildAddresses($email->getCcRecipients()),
-                    'Bcc' => $this->buildAddresses($email->getBccRecipients()),
-                    'Subject' => substr($email->getSubject(), 0, 255),
-                    'Attachments' => $this->buildAttachments($email->getAttachments(), false),
+                    'From'               => $this->buildAddress($email->getFrom()),
+                    'To'                 => $this->buildAddresses($email->getToRecipients()),
+                    'Cc'                 => $this->buildAddresses($email->getCcRecipients()),
+                    'Bcc'                => $this->buildAddresses($email->getBccRecipients()),
+                    'Subject'            => substr($email->getSubject(), 0, 255),
+                    'Attachments'        => $this->buildAttachments($email->getAttachments(), false),
                     'InlinedAttachments' => $this->buildAttachments($email->getEmbedded(), true),
-                ], $this->buildContent($email))
-            ]
+                ], $this->buildContent($email)),
+            ],
         ];
 
         if (!empty($email->getReplyTos())) {
@@ -106,7 +106,7 @@ class MailjetCourier implements Courier
         if ($content instanceof TemplatedContent) {
             return [
                 'TemplateID' => (int) $content->getTemplateId(),
-                'Variables' => $content->getTemplateData(),
+                'Variables'  => $content->getTemplateData(),
             ];
         } elseif ($content instanceof SimpleContent) {
             return [
@@ -132,7 +132,7 @@ class MailjetCourier implements Courier
     {
         return [
             'Email' => $address->getEmail(),
-            'Name' => $address->getName() ?? 'null',
+            'Name'  => $address->getName() ?? 'null',
         ];
     }
 
@@ -140,8 +140,8 @@ class MailjetCourier implements Courier
     {
         return array_map(function (Attachment $attachment) use ($embedded) {
             $arr = [
-                'ContentType' => $attachment->getContentType(),
-                'Filename' => $attachment->getName(),
+                'ContentType'   => $attachment->getContentType(),
+                'Filename'      => $attachment->getName(),
                 'Base64Content' => $attachment->getBase64Content(),
             ];
 
