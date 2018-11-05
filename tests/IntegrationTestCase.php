@@ -55,7 +55,7 @@ class IntegrationTestCase extends TestCase
             )
         );
 
-        self::assertEquals(1, count($parts), 'Unable to find embedded with Content-ID '.$contentId);
+        self::assertEquals(1, count($parts), 'Unable to find embedded with Content-ID ' . $contentId);
     }
 
     protected static function assertHasAttachmentWithName(Message $message, string $name): void
@@ -87,7 +87,7 @@ class IntegrationTestCase extends TestCase
             }
         }
 
-        self::assertEquals(1, count($matching), 'Unable to find an attachment with the name '.$name);
+        self::assertEquals(1, count($matching), 'Unable to find an attachment with the name ' . $name);
     }
 
     private function getEmailFromMailBox(string $mailBox, string $subject): ?Message
@@ -96,9 +96,9 @@ class IntegrationTestCase extends TestCase
 
         $attempts = 5;
         while ($attempts > 0) {
-            $conn = imap_open(getenv('IMAP_SERVER').$mailBox, getenv('IMAP_USERNAME'), getenv('IMAP_PASSWORD'));
+            $conn = imap_open(getenv('IMAP_SERVER') . $mailBox, getenv('IMAP_USERNAME'), getenv('IMAP_PASSWORD'));
 
-            $messages = imap_search($conn, 'SUBJECT "'.$subject.'"');
+            $messages = imap_search($conn, 'SUBJECT "' . $subject . '"');
 
             if ($messages !== false) {
                 return $parser->parse(imap_fetchbody($conn, $messages[0], ''));

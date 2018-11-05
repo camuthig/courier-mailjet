@@ -46,7 +46,7 @@ class MailjetCourierIntegrationTest extends IntegrationTestCase
 
     public function testSendsSimpleContent()
     {
-        $subject = 'Courier Integration Test '.random_int(100000000, 999999999);
+        $subject = 'Courier Integration Test ' . random_int(100000000, 999999999);
 
         $email = EmailBuilder::email()
             ->to($this->getTo())
@@ -95,7 +95,7 @@ class MailjetCourierIntegrationTest extends IntegrationTestCase
 
     public function testSendsTemplatedEmail()
     {
-        $subject = 'Courier Template Integration Test '.random_int(100000000, 999999999);
+        $subject = 'Courier Template Integration Test ' . random_int(100000000, 999999999);
 
         $email = EmailBuilder::email()
             ->to($this->getTo())
