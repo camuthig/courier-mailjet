@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Camuthig\Courier\Mailjet;
 
-use Courier\Courier;
+use Courier\ConfirmingCourier;
 use Courier\Exceptions\TransmissionException;
 use Courier\Exceptions\UnsupportedContentException;
+use Courier\SavesReceipts;
 use Mailjet\Client;
 use Mailjet\Resources;
 use PhpEmail\Address;
@@ -17,9 +18,12 @@ use PhpEmail\Content\Contracts\TemplatedContent;
 use PhpEmail\Content\EmptyContent;
 use PhpEmail\Email;
 use PhpEmail\Header;
+use Ramsey\Uuid\Uuid;
 
-class MailjetCourier implements Courier
+class MailjetCourier implements ConfirmingCourier
 {
+    use SavesReceipts;
+
     /**
      * @var Client
      */
@@ -47,6 +51,10 @@ class MailjetCourier implements Courier
         if (!$response->success()) {
             throw new TransmissionException($response->getStatus(), new \Exception($response->getReasonPhrase()));
         }
+
+        $customId = $response->getBody()['Messages'][0]['CustomID'];
+
+        $this->saveReceipt($email, $customId);
     }
 
     protected function supportedContent(): array
@@ -74,6 +82,7 @@ class MailjetCourier implements Courier
         $preparedEmail = [
             'Messages' => [
                 array_merge([
+                    'CustomID' => Uuid::uuid4()->toString(),
                     'From' => $this->buildAddress($email->getFrom()),
                     'To' => $this->buildAddresses($email->getToRecipients()),
                     'Cc' => $this->buildAddresses($email->getCcRecipients()),

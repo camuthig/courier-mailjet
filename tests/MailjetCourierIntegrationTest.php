@@ -91,6 +91,8 @@ class MailjetCourierIntegrationTest extends IntegrationTestCase
         self::assertEquals('Test', $message->getHeaderValue('x-test-header'));
         self::assertHasAttachmentWithContentId($message, 'embed-test');
         self::assertHasAttachmentWithName($message, 'Attached File');
+
+        self::assertNotEmpty($this->courier->receiptFor($email));
     }
 
     public function testSendsTemplatedEmail()
@@ -141,5 +143,7 @@ class MailjetCourierIntegrationTest extends IntegrationTestCase
         self::assertEquals('Test', $message->getHeaderValue('x-test-header'));
         self::assertHasAttachmentWithContentId($message, 'embed-test');
         self::assertHasAttachmentWithName($message, 'Attached File');
+
+        self::assertNotEmpty($this->courier->receiptFor($email));
     }
 }
