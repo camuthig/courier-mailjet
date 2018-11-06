@@ -44,6 +44,10 @@ class MailjetCourier implements ConfirmingCourier
      */
     public function deliver(Email $email): void
     {
+        if (!$this->supportsContent($email->getContent())) {
+            throw new UnsupportedContentException($email->getContent());
+        }
+
         $preparedEmail = $this->prepareEmail($email);
 
         $response = $this->client->post(Resources::$Email, ['body' => $preparedEmail], ['version' => 'v3.1']);
