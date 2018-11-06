@@ -13,7 +13,7 @@
         "php": "^7.1",
         "ext-json": "*",
         "mailjet/mailjet-apiv3-php": "^1.4.1",
-        "guzzlehttp/guzzle": "^6.0",
+        "guzzlehttp/guzzle": "^6.3",
         "quartzy/courier": "^0.4",
         "ramsey/uuid": "^3.0"
     },
