@@ -9,5 +9,31 @@
             "email": "camuthig@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^7.1",
+        "ext-json": "*",
+        "mailjet/mailjet-apiv3-php": "^1.4.1",
+        "guzzlehttp/guzzle": "^6.3",
+        "quartzy/courier": "^0.4",
+        "ramsey/uuid": "^3.0"
+    },
+    "require-dev": {
+        "ext-imap": "*",
+        "phpunit/phpunit": "^7.4",
+        "vlucas/phpdotenv": "^2.5",
+        "zbateson/mail-mime-parser": "^0.4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Camuthig\\Courier\\Mailjet\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Camuthig\\Courier\\Mailjet\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
 }
