@@ -67,7 +67,7 @@ The Apache License, v2.0. Please see [License File](LICENSE) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/camuthig/courier-mailjet.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat-square
-[ico-travisci]: https://img.shields.io/travis/camuthig/courier.svg-mailjet?style=flat-square
+[ico-travisci]: https://img.shields.io/travis/camuthig/courier-mailjet.svg?style=flat-square
 [ico-codecov]: https://img.shields.io/scrutinizer/coverage/g/camuthig/courier-mailjet.svg?style=flat-square
 [ico-styleci]: https://styleci.io/repos/155144704/shield
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/g/camuthig/courier-mailjet.svg?style=flat-square
