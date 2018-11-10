@@ -94,7 +94,7 @@ class IntegrationTestCase extends TestCase
     {
         $parser = new MailMimeParser();
 
-        $attempts = 5;
+        $attempts = 10;
         while ($attempts > 0) {
             $conn = imap_open(getenv('IMAP_SERVER') . $mailBox, getenv('IMAP_USERNAME'), getenv('IMAP_PASSWORD'));
 
