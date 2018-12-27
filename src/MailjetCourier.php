@@ -15,7 +15,6 @@ use PhpEmail\Attachment;
 use PhpEmail\Content;
 use PhpEmail\Content\Contracts\SimpleContent;
 use PhpEmail\Content\Contracts\TemplatedContent;
-use PhpEmail\Content\EmptyContent;
 use PhpEmail\Email;
 use PhpEmail\Header;
 use Ramsey\Uuid\Uuid;
@@ -64,7 +63,6 @@ class MailjetCourier implements ConfirmingCourier
     protected function supportedContent(): array
     {
         return [
-            EmptyContent::class,
             SimpleContent::class,
             TemplatedContent::class,
         ];
@@ -91,7 +89,7 @@ class MailjetCourier implements ConfirmingCourier
                     'To' => $this->buildAddresses($email->getToRecipients()),
                     'Cc' => $this->buildAddresses($email->getCcRecipients()),
                     'Bcc' => $this->buildAddresses($email->getBccRecipients()),
-                    'Subject' => substr($email->getSubject(), 0, 255),
+                    'Subject' => $email->getSubject() !== null ? substr($email->getSubject(), 0, 255) : '',
                     'Attachments' => $this->buildAttachments($email->getAttachments(), false),
                     'InlinedAttachments' => $this->buildAttachments($email->getEmbedded(), true),
                 ], $this->buildContent($email)),
